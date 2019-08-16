@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnowBall", "SnowBall\SnowBall.csproj", "{B816D40F-7B6F-4184-89B4-35AF83C7B3D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B816D40F-7B6F-4184-89B4-35AF83C7B3D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B816D40F-7B6F-4184-89B4-35AF83C7B3D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B816D40F-7B6F-4184-89B4-35AF83C7B3D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B816D40F-7B6F-4184-89B4-35AF83C7B3D3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF7164A4-BF02-4D7C-9F74-CE80C2054520}
+	EndGlobalSection
+EndGlobal
