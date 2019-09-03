@@ -16,6 +16,8 @@ namespace SnowBall
 
         //Counter to Handle the first Click
         int Btn1Click = 0;
+
+        //Create Debt dictionary
         DebtDictionary NewDebtDict = new DebtDictionary();
 
 
@@ -83,9 +85,13 @@ namespace SnowBall
             AmtBox.ResetText();
             MonthlyPayment.ResetText();
 
-            foreach(var value in NewDebtDict.InternalDebtDictionary.Keys)
+            foreach(var value in NewDebtDict.InternalDebtDictionary.Values)
             {
-                MessageBox.Show(value.ToString());
+                foreach(var ListVal in value)
+                {
+                    MessageBox.Show(ListVal.DebtName.ToString());
+                }
+               
             }
             
             
