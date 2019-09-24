@@ -12,7 +12,7 @@ namespace SnowBall
         public double DebtAmt { get; set; }
        
         public double DebtMinPayment { get; set; }
-        public double ExtraForDebt { get; set; }
+        
 
         public Debt(string DbtName, double DbtAmt, double DbtMinPymnt)
         {

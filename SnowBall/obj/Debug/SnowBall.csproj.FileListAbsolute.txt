@@ -5,6 +5,5 @@ C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall
 C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall.Form1.resources
 C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall.Properties.Resources.resources
 C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall.csproj.GenerateResource.cache
-C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall.csproj.CoreCompileInputs.cache
 C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall.exe
 C:\Users\jburns92\Documents\GitHub\Snowball\SnowBall\SnowBall\obj\Debug\SnowBall.pdb

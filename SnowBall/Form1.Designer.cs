@@ -64,6 +64,7 @@
             this.AmtBox.Size = new System.Drawing.Size(161, 20);
             this.AmtBox.TabIndex = 2;
             this.AmtBox.TextChanged += new System.EventHandler(this.AmtBox_TextChanged);
+            this.AmtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmtBox_KeyPress);
             // 
             // NameLabel
             // 
@@ -109,6 +110,7 @@
             this.MonthlyPayment.Name = "MonthlyPayment";
             this.MonthlyPayment.Size = new System.Drawing.Size(161, 20);
             this.MonthlyPayment.TabIndex = 3;
+            this.MonthlyPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MonthlyPayment_KeyPress);
             // 
             // ExtraDebtMoney
             // 
@@ -125,6 +127,7 @@
             this.ExtraMoneyTxtBox.Name = "ExtraMoneyTxtBox";
             this.ExtraMoneyTxtBox.Size = new System.Drawing.Size(161, 20);
             this.ExtraMoneyTxtBox.TabIndex = 4;
+            this.ExtraMoneyTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExtraMoneyTxtBox_KeyPress);
             // 
             // Form1
             // 
