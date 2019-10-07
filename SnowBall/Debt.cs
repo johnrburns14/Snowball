@@ -9,16 +9,13 @@ namespace SnowBall
     public class Debt
     {
         public string DebtName { get; set; }
-        public double DebtAmt { get; set; }
-       
-        public double DebtMinPayment { get; set; }
-        
-
-        public Debt(string DbtName, double DbtAmt, double DbtMinPymnt)
+        public double DebtAmount { get; set; } 
+        public double DebtMinimumPayment { get; set; }
+        public Debt(string DebtName, double DebtAmount, double DebtMinimumPayment)
         {
-            DebtName = DbtName;
-            DebtAmt = DbtAmt;
-            DebtMinPayment = DbtMinPymnt;
+            this.DebtName = DebtName;
+            this.DebtAmount = DebtAmount;
+            this.DebtMinimumPayment = DebtMinimumPayment;
         }
        
     }

@@ -12,71 +12,86 @@ namespace SnowBall
 {
     public partial class Form1 : Form
     {
-        
-
-        //Counter to Handle the first Click
-        int Btn1Click = 0;
-
-        //Create Debt dictionary
-        DebtDictionary NewDebtDict = new DebtDictionary();
-
-
         public Form1()
         {
             InitializeComponent();
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
-
-       
-        private void Button1_Click(object sender, EventArgs e)
+        private void NameLabel_Click(object sender, EventArgs e)
         {
 
-            if (NameBox.Text == "" || AmtBox.Text == "" || MonthlyPayment.Text == "" || ExtraMoneyTxtBox.Text == "")
+        }
+        private void AmtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //Counter to Handle the first Click to make the ExtraForDebt textbox and label dissapear. 
+        int NextDebtButtonClick = 0;
+
+        //Create Debt dictionary
+        DebtDictionary NewDebtDict = new DebtDictionary();
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            //Check for empty Text Boxes and display message if found. 
+            if (NameTextBox.Text == "" || AmountTextBox.Text == "" || MinimumPaymentTextBox.Text == "" || ExtraForDebtTextBox.Text == "")
             {
                 MessageBox.Show("Please enter a value in each field");
-
             }
             else
             {
                 try
                 {
                     //Increment button click
-                    ++Btn1Click;
+                    ++NextDebtButtonClick;
 
                     //Pulling all of the values from the form and assigning them to a variable 
-                    string NewDebtName = NameBox.Text.ToString();
-                    double NewDebtAmt = double.Parse(AmtBox.Text);
-                    double NewDebtMinPymnt = double.Parse(MonthlyPayment.Text);
+                    string NewDebtName = NameTextBox.Text.ToString();
+                    double NewDebtAmt = double.Parse(AmountTextBox.Text);
+                    double NewDebtMinPymnt = double.Parse(MinimumPaymentTextBox.Text);
 
                     //Switch to handle data from form, should be special for the first click then different for every other one
-                    switch (Btn1Click)
+                    switch (NextDebtButtonClick)
                     {
+                        //This executes on the first debt item input. 
                         case 1:
-
+                            //Makes a new debt object and assigns the variables from text box above. Sets the ExtraForDebt variable in DebtDictionary class. Adds to the DebtDictionary. 
                             var NewDebt = new Debt(NewDebtName, NewDebtAmt, NewDebtMinPymnt);
-                            NewDebtDict.ExtraForDebt = (double.Parse(ExtraMoneyTxtBox.Text));
+                            NewDebtDict.ExtraForDebt = (double.Parse(ExtraForDebtTextBox.Text));
                             NewDebtDict.Add(NewDebtAmt, NewDebt);
-                            NameBox.ResetText();
-                            AmtBox.ResetText();
-                            MonthlyPayment.ResetText();
-                            ExtraDebtMoney.Visible = false;
-                            ExtraMoneyTxtBox.Visible = false;
+                            
+                            //Clears the text boxes for the next debt. 
+                            NameTextBox.ResetText();
+                            AmountTextBox.ResetText();
+                            MinimumPaymentTextBox.ResetText();
+
+                            //Removes the ExtraForDebt label and text box. 
+                            ExtraForDebtLabel.Visible = false;
+                            ExtraForDebtTextBox.Visible = false;
+                            
+                            //End
                             break;
 
+                        //Handles all other debt input items after the first. 
                         default:
+                            //Makes a new debt object and adds to the DebtDictionary
                             var OtherNewDebt = new Debt(NewDebtName, NewDebtAmt, NewDebtMinPymnt);
                             NewDebtDict.Add(NewDebtAmt, OtherNewDebt);
-                            NameBox.ResetText();
-                            AmtBox.ResetText();
-                            MonthlyPayment.ResetText();
+                            
+                            //Clear Text boxes for next debt. 
+                            NameTextBox.ResetText();
+                            AmountTextBox.ResetText();
+                            MinimumPaymentTextBox.ResetText();
+                            
+                            //End
                             break;
-
                     }
                 }
+                //Catch all errors and reports. 
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
@@ -84,15 +99,11 @@ namespace SnowBall
             }
             
         }
-
-        private void NameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void FinishedButton_Click(object sender, EventArgs e)
         {
-            if (NameBox.Text == "" || AmtBox.Text == "" || MonthlyPayment.Text == "" || ExtraMoneyTxtBox.Text == "")
+            //Check for empty Text Boxes and display message if found.
+            if (NameTextBox.Text == "" || AmountTextBox.Text == "" || MinimumPaymentTextBox.Text == "" || ExtraForDebtTextBox.Text == "")
             {
                 MessageBox.Show("Please enter a value in each field");
             }
@@ -100,80 +111,81 @@ namespace SnowBall
             {
                 try
                 {
-                    string NewDebtName = NameBox.Text.ToString();
-                    double NewDebtAmt = double.Parse(AmtBox.Text);
-                    double NewDebtMinPymnt = double.Parse(MonthlyPayment.Text);
+                    //Pulling all of the values from the form and assigning them to a variable
+                    string NewDebtName = NameTextBox.Text.ToString();
+                    double NewDebtAmt = double.Parse(AmountTextBox.Text);
+                    double NewDebtMinPymnt = double.Parse(MinimumPaymentTextBox.Text);
+
+                    //Makes a new debt object and adds to the DebtDictionary
                     var OtherNewDebt = new Debt(NewDebtName, NewDebtAmt, NewDebtMinPymnt);
                     NewDebtDict.Add(NewDebtAmt, OtherNewDebt);
-                    NameBox.ResetText();
-                    AmtBox.ResetText();
-                    MonthlyPayment.ResetText();
 
+                    //Clear text boxes for the next debt. 
+                    NameTextBox.ResetText();
+                    AmountTextBox.ResetText();
+                    MinimumPaymentTextBox.ResetText();
+
+                    //Call function in DebtDictionary to calculate and return final output. 
                     MessageBox.Show(NewDebtDict.DictionaryCalc().ToString());
                 }
+                //Catch errors and report
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-            }
-            
+            }           
         }
-
-        private void AmtBox_TextChanged(object sender, EventArgs e)
+        //Check inputs to AmountTextBox and catch any non numeric inputs with the exception of decimals and show a message if bad input detected. 
+        private void AmtBox_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
+            Char chr = InputKey.KeyChar;
 
-        }
-
-        private void AmtBox_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            Char chr = e.KeyChar;
-
-            if(chr == 46 && AmtBox.Text.IndexOf('.') != -1)
+            //Catches multiple decimals. 
+            if (chr == 46 && AmountTextBox.Text.IndexOf('.') != -1)
             {
-                e.Handled = true;
+                InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
-
-
+            //Catches non-numeric input and allows for backspacing and decimals.
             if (!Char.IsDigit(chr) && chr != 8 && chr != 46)
             {
-                e.Handled = true;
+                InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
         }
-
-        private void MonthlyPayment_KeyPress(object sender, KeyPressEventArgs e)
+        //Check inputs to MinimumPaymentTextBox and catch any non numeric inputs with the exception of decimals and show a message if bad input detected.
+        private void MonthlyPayment_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
-            Char chr = e.KeyChar;
+            Char chr = InputKey.KeyChar;
 
-            if (chr == 46 && MonthlyPayment.Text.IndexOf('.') != -1)
+            //Catches multiple decimals. 
+            if (chr == 46 && MinimumPaymentTextBox.Text.IndexOf('.') != -1)
             {
-                e.Handled = true;
+                InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
-
-
+            //Catches non-numeric input and allows for backspacing and decimals.
             if (!Char.IsDigit(chr) && chr != 8 && chr != 46)
             {
-                e.Handled = true;
+                InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
         }
-
-        private void ExtraMoneyTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        //Check inputs to ExtraForDebtTextBox and catch any non numeric inputs with the exception of decimals and show a message if bad input detected.
+        private void ExtraMoneyTxtBox_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
-            Char chr = e.KeyChar;
+            Char chr = InputKey.KeyChar;
 
-            if (chr == 46 && ExtraMoneyTxtBox.Text.IndexOf('.') != -1)
+            //Catches multiple decimals. 
+            if (chr == 46 && ExtraForDebtTextBox.Text.IndexOf('.') != -1)
             {
-                e.Handled = true;
+                InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
-
-
+            //Catches non-numeric input and allows for backspacing and decimals.
             if (!Char.IsDigit(chr) && chr != 8 && chr != 46)
             {
-                e.Handled = true;
+                InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
         }

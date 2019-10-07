@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.GoNextButton = new System.Windows.Forms.Button();
-            this.NameBox = new System.Windows.Forms.TextBox();
-            this.AmtBox = new System.Windows.Forms.TextBox();
+            this.NextDebtButton = new System.Windows.Forms.Button();
+            this.NameTextBox = new System.Windows.Forms.TextBox();
+            this.AmountTextBox = new System.Windows.Forms.TextBox();
             this.NameLabel = new System.Windows.Forms.Label();
-            this.AmtLabel = new System.Windows.Forms.Label();
+            this.AmountLabel = new System.Windows.Forms.Label();
             this.FinishedButton = new System.Windows.Forms.Button();
-            this.DebtMinPaymentLabel = new System.Windows.Forms.Label();
-            this.MonthlyPayment = new System.Windows.Forms.TextBox();
-            this.ExtraDebtMoney = new System.Windows.Forms.Label();
-            this.ExtraMoneyTxtBox = new System.Windows.Forms.TextBox();
+            this.DebtMinimumPaymentLabel = new System.Windows.Forms.Label();
+            this.MinimumPaymentTextBox = new System.Windows.Forms.TextBox();
+            this.ExtraForDebtLabel = new System.Windows.Forms.Label();
+            this.ExtraForDebtTextBox = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // GoNextButton
+            // NextDebtButton
             // 
-            this.GoNextButton.Location = new System.Drawing.Point(311, 339);
-            this.GoNextButton.Name = "GoNextButton";
-            this.GoNextButton.Size = new System.Drawing.Size(75, 23);
-            this.GoNextButton.TabIndex = 5;
-            this.GoNextButton.Text = "Next Debt";
-            this.GoNextButton.UseVisualStyleBackColor = true;
-            this.GoNextButton.Click += new System.EventHandler(this.Button1_Click);
+            this.NextDebtButton.Location = new System.Drawing.Point(311, 339);
+            this.NextDebtButton.Name = "NextDebtButton";
+            this.NextDebtButton.Size = new System.Drawing.Size(75, 23);
+            this.NextDebtButton.TabIndex = 5;
+            this.NextDebtButton.Text = "Next Debt";
+            this.NextDebtButton.UseVisualStyleBackColor = true;
+            this.NextDebtButton.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // NameBox
+            // NameTextBox
             // 
-            this.NameBox.Location = new System.Drawing.Point(311, 82);
-            this.NameBox.Name = "NameBox";
-            this.NameBox.Size = new System.Drawing.Size(161, 20);
-            this.NameBox.TabIndex = 1;
+            this.NameTextBox.Location = new System.Drawing.Point(311, 82);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.Size = new System.Drawing.Size(161, 20);
+            this.NameTextBox.TabIndex = 1;
             // 
-            // AmtBox
+            // AmountTextBox
             // 
-            this.AmtBox.Location = new System.Drawing.Point(311, 121);
-            this.AmtBox.Name = "AmtBox";
-            this.AmtBox.Size = new System.Drawing.Size(161, 20);
-            this.AmtBox.TabIndex = 2;
-            this.AmtBox.TextChanged += new System.EventHandler(this.AmtBox_TextChanged);
-            this.AmtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmtBox_KeyPress);
+            this.AmountTextBox.Location = new System.Drawing.Point(311, 121);
+            this.AmountTextBox.Name = "AmountTextBox";
+            this.AmountTextBox.Size = new System.Drawing.Size(161, 20);
+            this.AmountTextBox.TabIndex = 2;
+            this.AmountTextBox.TextChanged += new System.EventHandler(this.AmtBox_TextChanged);
+            this.AmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmtBox_KeyPress);
             // 
             // NameLabel
             // 
@@ -76,14 +76,14 @@
             this.NameLabel.Text = "Debt Name:";
             this.NameLabel.Click += new System.EventHandler(this.NameLabel_Click);
             // 
-            // AmtLabel
+            // AmountLabel
             // 
-            this.AmtLabel.AutoSize = true;
-            this.AmtLabel.Location = new System.Drawing.Point(233, 128);
-            this.AmtLabel.Name = "AmtLabel";
-            this.AmtLabel.Size = new System.Drawing.Size(72, 13);
-            this.AmtLabel.TabIndex = 6;
-            this.AmtLabel.Text = "Debt Amount:";
+            this.AmountLabel.AutoSize = true;
+            this.AmountLabel.Location = new System.Drawing.Point(233, 128);
+            this.AmountLabel.Name = "AmountLabel";
+            this.AmountLabel.Size = new System.Drawing.Size(72, 13);
+            this.AmountLabel.TabIndex = 6;
+            this.AmountLabel.Text = "Debt Amount:";
             // 
             // FinishedButton
             // 
@@ -95,55 +95,55 @@
             this.FinishedButton.UseVisualStyleBackColor = true;
             this.FinishedButton.Click += new System.EventHandler(this.FinishedButton_Click);
             // 
-            // DebtMinPaymentLabel
+            // DebtMinimumPaymentLabel
             // 
-            this.DebtMinPaymentLabel.AutoSize = true;
-            this.DebtMinPaymentLabel.Location = new System.Drawing.Point(170, 163);
-            this.DebtMinPaymentLabel.Name = "DebtMinPaymentLabel";
-            this.DebtMinPaymentLabel.Size = new System.Drawing.Size(135, 13);
-            this.DebtMinPaymentLabel.TabIndex = 7;
-            this.DebtMinPaymentLabel.Text = "Minimum Monthly Payment:";
+            this.DebtMinimumPaymentLabel.AutoSize = true;
+            this.DebtMinimumPaymentLabel.Location = new System.Drawing.Point(170, 163);
+            this.DebtMinimumPaymentLabel.Name = "DebtMinimumPaymentLabel";
+            this.DebtMinimumPaymentLabel.Size = new System.Drawing.Size(135, 13);
+            this.DebtMinimumPaymentLabel.TabIndex = 7;
+            this.DebtMinimumPaymentLabel.Text = "Minimum Monthly Payment:";
             // 
-            // MonthlyPayment
+            // MinimumPaymentTextBox
             // 
-            this.MonthlyPayment.Location = new System.Drawing.Point(311, 156);
-            this.MonthlyPayment.Name = "MonthlyPayment";
-            this.MonthlyPayment.Size = new System.Drawing.Size(161, 20);
-            this.MonthlyPayment.TabIndex = 3;
-            this.MonthlyPayment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MonthlyPayment_KeyPress);
+            this.MinimumPaymentTextBox.Location = new System.Drawing.Point(311, 156);
+            this.MinimumPaymentTextBox.Name = "MinimumPaymentTextBox";
+            this.MinimumPaymentTextBox.Size = new System.Drawing.Size(161, 20);
+            this.MinimumPaymentTextBox.TabIndex = 3;
+            this.MinimumPaymentTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MonthlyPayment_KeyPress);
             // 
-            // ExtraDebtMoney
+            // ExtraForDebtLabel
             // 
-            this.ExtraDebtMoney.AutoSize = true;
-            this.ExtraDebtMoney.Location = new System.Drawing.Point(185, 207);
-            this.ExtraDebtMoney.Name = "ExtraDebtMoney";
-            this.ExtraDebtMoney.Size = new System.Drawing.Size(120, 13);
-            this.ExtraDebtMoney.TabIndex = 9;
-            this.ExtraDebtMoney.Text = "Excess Money for Debt:";
+            this.ExtraForDebtLabel.AutoSize = true;
+            this.ExtraForDebtLabel.Location = new System.Drawing.Point(185, 207);
+            this.ExtraForDebtLabel.Name = "ExtraForDebtLabel";
+            this.ExtraForDebtLabel.Size = new System.Drawing.Size(120, 13);
+            this.ExtraForDebtLabel.TabIndex = 9;
+            this.ExtraForDebtLabel.Text = "Excess Money for Debt:";
             // 
-            // ExtraMoneyTxtBox
+            // ExtraForDebtTextBox
             // 
-            this.ExtraMoneyTxtBox.Location = new System.Drawing.Point(311, 200);
-            this.ExtraMoneyTxtBox.Name = "ExtraMoneyTxtBox";
-            this.ExtraMoneyTxtBox.Size = new System.Drawing.Size(161, 20);
-            this.ExtraMoneyTxtBox.TabIndex = 4;
-            this.ExtraMoneyTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExtraMoneyTxtBox_KeyPress);
+            this.ExtraForDebtTextBox.Location = new System.Drawing.Point(311, 200);
+            this.ExtraForDebtTextBox.Name = "ExtraForDebtTextBox";
+            this.ExtraForDebtTextBox.Size = new System.Drawing.Size(161, 20);
+            this.ExtraForDebtTextBox.TabIndex = 4;
+            this.ExtraForDebtTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ExtraMoneyTxtBox_KeyPress);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.ExtraMoneyTxtBox);
-            this.Controls.Add(this.ExtraDebtMoney);
-            this.Controls.Add(this.MonthlyPayment);
-            this.Controls.Add(this.DebtMinPaymentLabel);
+            this.Controls.Add(this.ExtraForDebtTextBox);
+            this.Controls.Add(this.ExtraForDebtLabel);
+            this.Controls.Add(this.MinimumPaymentTextBox);
+            this.Controls.Add(this.DebtMinimumPaymentLabel);
             this.Controls.Add(this.FinishedButton);
-            this.Controls.Add(this.AmtLabel);
+            this.Controls.Add(this.AmountLabel);
             this.Controls.Add(this.NameLabel);
-            this.Controls.Add(this.AmtBox);
-            this.Controls.Add(this.NameBox);
-            this.Controls.Add(this.GoNextButton);
+            this.Controls.Add(this.AmountTextBox);
+            this.Controls.Add(this.NameTextBox);
+            this.Controls.Add(this.NextDebtButton);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -154,16 +154,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Button GoNextButton;
-        private System.Windows.Forms.TextBox NameBox;
-        private System.Windows.Forms.TextBox AmtBox;
+        private System.Windows.Forms.Button NextDebtButton;
+        private System.Windows.Forms.TextBox NameTextBox;
+        private System.Windows.Forms.TextBox AmountTextBox;
         private System.Windows.Forms.Label NameLabel;
-        private System.Windows.Forms.Label AmtLabel;
+        private System.Windows.Forms.Label AmountLabel;
         private System.Windows.Forms.Button FinishedButton;
-        private System.Windows.Forms.Label DebtMinPaymentLabel;
-        private System.Windows.Forms.TextBox MonthlyPayment;
-        private System.Windows.Forms.Label ExtraDebtMoney;
-        private System.Windows.Forms.TextBox ExtraMoneyTxtBox;
+        private System.Windows.Forms.Label DebtMinimumPaymentLabel;
+        private System.Windows.Forms.TextBox MinimumPaymentTextBox;
+        private System.Windows.Forms.Label ExtraForDebtLabel;
+        private System.Windows.Forms.TextBox ExtraForDebtTextBox;
     }
 }
 
