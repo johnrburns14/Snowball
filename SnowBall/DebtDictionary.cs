@@ -57,13 +57,13 @@ namespace SnowBall
             //now freed up money from the debt that is paid off and add it to ExtraForDebt. Finally account for months you spent paying off the current debt so the next debt can be properly calculated. 
             foreach (var listOfDebtObjects in _internalDebtDictionary.Values)
             {
-                foreach(var debtObject in listOfDebtObjects)
+                foreach (var debtObject in listOfDebtObjects)
                 {
                     debtObject.DebtAmount -= monthsTotal * debtObject.DebtMinimumPayment;
                     double MonthlyPayment = _extraForDebt + debtObject.DebtMinimumPayment;
-                    double MonthsToPay =Math.Ceiling(debtObject.DebtAmount / MonthlyPayment);
-                   
-                    OutputString.AppendLine(debtObject.DebtName + " should take " + MonthsToPay + " months to pay off, and you should be paying $" + MonthlyPayment + " per month.");
+                    double MonthsToPay = Math.Ceiling(debtObject.DebtAmount / MonthlyPayment);
+
+                    OutputString.AppendLine($"{debtObject.DebtName} should take {MonthsToPay} month(s) to pay off, and you should be paying ${MonthlyPayment} per month.");
 
                     _extraForDebt += debtObject.DebtMinimumPayment;
                     monthsTotal += MonthsToPay;
