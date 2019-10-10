@@ -72,13 +72,13 @@ namespace SnowBall
         /// <summary>
         /// Adds input from form to DebtDictionary and resets form. 
         /// </summary>
-        /// <param name="NewDebtName"></param>
-        /// <param name="NewDebtAmt"></param>
-        /// <param name="NewDebtMinPymnt"></param>
-        private void AddNewDebt(string NewDebtName, double NewDebtAmt, double NewDebtMinPymnt)
+        /// <param name="newDebtName"></param>
+        /// <param name="newDebtAmt"></param>
+        /// <param name="newDebtMinPymnt"></param>
+        private void AddNewDebt(string newDebtName, double newDebtAmt, double newDebtMinPymnt)
         {
-            var OtherNewDebt = new Debt(NewDebtName, NewDebtAmt, NewDebtMinPymnt);
-            NewDebtDict.Add(NewDebtAmt, OtherNewDebt);
+            var OtherNewDebt = new Debt(newDebtName, newDebtAmt, newDebtMinPymnt);
+            NewDebtDict.Add(newDebtAmt, OtherNewDebt);
 
             ResetForm();
         }
@@ -86,14 +86,14 @@ namespace SnowBall
         /// <summary>
         /// Adds input from form to DebtDictionary, resets form, and Hide extra for debt textbox/label.
         /// </summary>
-        /// <param name="NewDebtName"></param>
-        /// <param name="NewDebtAmt"></param>
-        /// <param name="NewDebtMinPymnt"></param>
-        private void InitializeFirstDebt(string NewDebtName, double NewDebtAmt, double NewDebtMinPymnt)
+        /// <param name="newDebtName"></param>
+        /// <param name="newDebtAmt"></param>
+        /// <param name="newDebtMinPymnt"></param>
+        private void InitializeFirstDebt(string newDebtName, double newDebtAmt, double newDebtMinPymnt)
         { 
-            var NewDebt = new Debt(NewDebtName, NewDebtAmt, NewDebtMinPymnt);
+            var NewDebt = new Debt(newDebtName, newDebtAmt, newDebtMinPymnt);
             NewDebtDict = new DebtDictionary((double.Parse(ExtraForDebtTextBox.Text)));
-            NewDebtDict.Add(NewDebtAmt, NewDebt);
+            NewDebtDict.Add(newDebtAmt, NewDebt);
 
             ResetForm();
 
@@ -172,14 +172,17 @@ namespace SnowBall
         private void AmtBox_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
             ValidateInput(InputKey);
+            AmountTextBoxDecimalCheck(InputKey);
         }
         private void MonthlyPayment_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
             ValidateInput(InputKey);
+            MinimumPaymentBoxDecimalCheck(InputKey);
         }
         private void ExtraMoneyTxtBox_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
             ValidateInput(InputKey);
+            ExtraForDebtBoxDecimalCheck(InputKey);
         }
 
         /// <summary>
@@ -188,7 +191,8 @@ namespace SnowBall
         /// <param name="InputKey"></param>
         private void ValidateInput(KeyPressEventArgs InputKey)
         {
-            if (MultipleDecimals(InputKey.KeyChar) || IsInvalidCharacter(InputKey.KeyChar))
+            
+            if(IsInvalidCharacter(InputKey.KeyChar))
             {
                 InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
@@ -204,15 +208,43 @@ namespace SnowBall
         {
             return !Char.IsDigit(chr) && chr != 8 && chr != 46;
         }
+        /// <summary>
+        /// Checks the Amount Text box for multiple decimals
+        /// </summary>
+        /// <param name="InputKey"></param>
+        private void AmountTextBoxDecimalCheck(KeyPressEventArgs InputKey)
+        {
+            if (InputKey.KeyChar == 46 && (AmountTextBox.Text.Contains(".")))
+            {
+                InputKey.Handled = true;
+                MessageBox.Show("Please enter a valid value");
+            }
+        }
 
         /// <summary>
-        /// Checks for multiple decimals
+        /// Checks the MinimumPayment Text box for multiple decimals
         /// </summary>
-        /// <param name="chr"></param>
-        /// <returns></returns>
-        private bool MultipleDecimals(char chr)
+        /// <param name="InputKey"></param>
+        private void MinimumPaymentBoxDecimalCheck(KeyPressEventArgs InputKey)
         {
-            return chr == 46 && AmountTextBox.Text.IndexOf('.') != -1;
-        }     
+            if (InputKey.KeyChar == 46 && (MinimumPaymentTextBox.Text.Contains(".")))
+            {
+                InputKey.Handled = true;
+                MessageBox.Show("Please enter a valid value");
+            }
+        }
+
+        /// <summary>
+        /// Checks the ExtraForDebt Text box for multiple decimals
+        /// </summary>
+        /// <param name="InputKey"></param>
+        private void ExtraForDebtBoxDecimalCheck(KeyPressEventArgs InputKey)
+        {
+            if (InputKey.KeyChar == 46 && (ExtraForDebtTextBox.Text.Contains(".")))
+            {
+                InputKey.Handled = true;
+                MessageBox.Show("Please enter a valid value");
+            }
+        }
     }
 }

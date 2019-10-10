@@ -23,22 +23,22 @@ namespace SnowBall
         /// <summary>
         /// Function to add inputs from form to the Dicttionary by checking for an already existing key and adding to the List if a duplicate Key. 
         /// </summary>
-        /// <param name="DebtAmount"></param>
-        /// <param name="NewDebt"></param>
-        public void Add(double DebtAmount, Debt NewDebt)
+        /// <param name="debtAmount"></param>
+        /// <param name="newDebt"></param>
+        public void Add(double debtAmount, Debt newDebt)
         {
-            if (_internalDebtDictionary.ContainsKey(DebtAmount))
+            if (_internalDebtDictionary.ContainsKey(debtAmount))
             {
-                List<Debt> list = _internalDebtDictionary[DebtAmount];
-                if (list.Contains(NewDebt) == false)
+                List<Debt> list = _internalDebtDictionary[debtAmount];
+                if (list.Contains(newDebt) == false)
                 {
-                    list.Add(NewDebt);
+                    list.Add(newDebt);
                 }
             }
             else
             {
-                List<Debt> list = new List<Debt>{NewDebt};
-                _internalDebtDictionary.Add(DebtAmount, list);
+                List<Debt> list = new List<Debt>{newDebt};
+                _internalDebtDictionary.Add(debtAmount, list);
             }
         }
 
