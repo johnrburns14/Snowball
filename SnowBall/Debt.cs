@@ -11,11 +11,11 @@ namespace SnowBall
         public string DebtName { get; set; }
         public double DebtAmount { get; set; } 
         public double DebtMinimumPayment { get; set; }
-        public Debt(string DebtName, double DebtAmount, double DebtMinimumPayment)
+        public Debt(string debtName, double debtAmount, double debtMinimumPayment)
         {
-            this.DebtName = DebtName;
-            this.DebtAmount = DebtAmount;
-            this.DebtMinimumPayment = DebtMinimumPayment;
+            DebtName = debtName;
+            DebtAmount = debtAmount;
+            DebtMinimumPayment = debtMinimumPayment;
         }
        
     }

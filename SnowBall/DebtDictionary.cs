@@ -8,18 +8,28 @@ namespace SnowBall
 {
     public class DebtDictionary
     {
-        //ExtraForDebt exist here so it can be used to handle the final output with the DictionaryCalc function below. 
-        public double ExtraForDebt { get; set; }
+        private double _extraForDebt { get; set; }
 
-        //Create Dictionary for form values to go into
-        public SortedDictionary<double, List<Debt>> InternalDebtDictionary = new SortedDictionary<double, List<Debt>>();
+        /// <summary>
+        /// Dictionary for form values to go into
+        /// </summary>
+        private SortedDictionary<double, List<Debt>> _internalDebtDictionary = new SortedDictionary<double, List<Debt>>();
 
-        //Function to add inputs from form to the Dicttionary created above by checking for an already existing key and adding to the List if a duplicate Key. 
+        public DebtDictionary(double extraForDebt)
+        {
+            _extraForDebt = extraForDebt;
+        }
+
+        /// <summary>
+        /// Function to add inputs from form to the Dicttionary by checking for an already existing key and adding to the List if a duplicate Key. 
+        /// </summary>
+        /// <param name="DebtAmount"></param>
+        /// <param name="NewDebt"></param>
         public void Add(double DebtAmount, Debt NewDebt)
         {
-            if (InternalDebtDictionary.ContainsKey(DebtAmount))
+            if (_internalDebtDictionary.ContainsKey(DebtAmount))
             {
-                List<Debt> list = InternalDebtDictionary[DebtAmount];
+                List<Debt> list = _internalDebtDictionary[DebtAmount];
                 if (list.Contains(NewDebt) == false)
                 {
                     list.Add(NewDebt);
@@ -27,13 +37,15 @@ namespace SnowBall
             }
             else
             {
-                List<Debt> list = new List<Debt>();
-                list.Add(NewDebt);
-                this.InternalDebtDictionary.Add(DebtAmount, list);
+                List<Debt> list = new List<Debt>{NewDebt};
+                _internalDebtDictionary.Add(DebtAmount, list);
             }
         }
-        
-        //Function to create a finalized output. 
+
+        /// <summary>
+        /// Creates and returns finalized output.
+        /// </summary>
+        /// <returns></returns>
         public StringBuilder DictionaryCalc()
         {
             double monthsTotal = 0;
@@ -43,17 +55,17 @@ namespace SnowBall
             //Go through every item in the DebtDictionary and every Debt in the List. Starts with determining if previous months have been paid and subtracting the monthly minimum payments from the debt total
             //before more calculations. Second calculate how much should be paid monthly. Third calculate how many months to pay off the debt. Adds calculations and debt information the output. Fourth take the 
             //now freed up money from the debt that is paid off and add it to ExtraForDebt. Finally account for months you spent paying off the current debt so the next debt can be properly calculated. 
-            foreach (var value in InternalDebtDictionary.Values)
+            foreach (var listOfDebtObjects in _internalDebtDictionary.Values)
             {
-                foreach(var ListVal in value)
+                foreach(var debtObject in listOfDebtObjects)
                 {
-                    ListVal.DebtAmount -= monthsTotal * ListVal.DebtMinimumPayment;
-                    double MonthlyPayment = ExtraForDebt + ListVal.DebtMinimumPayment;
-                    double MonthsToPay =Math.Ceiling(ListVal.DebtAmount / MonthlyPayment);
+                    debtObject.DebtAmount -= monthsTotal * debtObject.DebtMinimumPayment;
+                    double MonthlyPayment = _extraForDebt + debtObject.DebtMinimumPayment;
+                    double MonthsToPay =Math.Ceiling(debtObject.DebtAmount / MonthlyPayment);
                    
-                    OutputString.AppendLine(ListVal.DebtName + " should take " + MonthsToPay + " months to pay off, and you should be paying $" + MonthlyPayment + " per month.");
+                    OutputString.AppendLine(debtObject.DebtName + " should take " + MonthsToPay + " months to pay off, and you should be paying $" + MonthlyPayment + " per month.");
 
-                    ExtraForDebt += ListVal.DebtMinimumPayment;
+                    _extraForDebt += debtObject.DebtMinimumPayment;
                     monthsTotal += MonthsToPay;
                 }
             }

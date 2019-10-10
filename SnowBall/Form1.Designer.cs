@@ -63,7 +63,7 @@
             this.AmountTextBox.Name = "AmountTextBox";
             this.AmountTextBox.Size = new System.Drawing.Size(161, 20);
             this.AmountTextBox.TabIndex = 2;
-            this.AmountTextBox.TextChanged += new System.EventHandler(this.AmtBox_TextChanged);
+          
             this.AmountTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AmtBox_KeyPress);
             // 
             // NameLabel
@@ -74,8 +74,7 @@
             this.NameLabel.Size = new System.Drawing.Size(64, 13);
             this.NameLabel.TabIndex = 5;
             this.NameLabel.Text = "Debt Name:";
-            this.NameLabel.Click += new System.EventHandler(this.NameLabel_Click);
-            // 
+            
             // AmountLabel
             // 
             this.AmountLabel.AutoSize = true;
@@ -146,7 +145,6 @@
             this.Controls.Add(this.NextDebtButton);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
