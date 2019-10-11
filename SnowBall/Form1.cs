@@ -133,7 +133,7 @@ namespace SnowBall
         }
 
         /// <summary>
-        /// Checks to see if each text box is empty
+        /// Checks to see if any text box is empty
         /// </summary>
         /// <returns></returns>
         private bool TextBoxesEmpty()
@@ -171,32 +171,48 @@ namespace SnowBall
         }
         private void AmtBox_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
-            ValidateInput(InputKey);
-            AmountTextBoxDecimalCheck(InputKey);
+            string textBoxString = AmountTextBox.Text;
+            ValidateInput(InputKey, textBoxString);
         }
         private void MonthlyPayment_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
-            ValidateInput(InputKey);
-            MinimumPaymentBoxDecimalCheck(InputKey);
+            string textBoxString = MinimumPaymentTextBox.Text;
+            ValidateInput(InputKey, textBoxString);
         }
         private void ExtraMoneyTxtBox_KeyPress(object sender, KeyPressEventArgs InputKey)
         {
-            ValidateInput(InputKey);
-            ExtraForDebtBoxDecimalCheck(InputKey);
+            string textBoxString = ExtraForDebtTextBox.Text;
+            ValidateInput(InputKey, textBoxString);
         }
 
         /// <summary>
         /// Check every keypress in textbox to ensure validity
         /// </summary>
         /// <param name="InputKey"></param>
-        private void ValidateInput(KeyPressEventArgs InputKey)
+        private void ValidateInput(KeyPressEventArgs InputKey, string stringInTextBox)
         {
-            
-            if(IsInvalidCharacter(InputKey.KeyChar))
+
+            if (IsInvalidCharacter(InputKey.KeyChar))
             {
                 InputKey.Handled = true;
                 MessageBox.Show("Please enter a valid value");
             }
+            if (HasMoreThanOneDecimal(InputKey, stringInTextBox))
+            {
+                InputKey.Handled = true;
+                MessageBox.Show("Please enter a valid value");
+            }
+        }
+
+        /// <summary>
+        /// Allows for decimal and catches the attempt to use multiple decimals. 
+        /// </summary>
+        /// <param name="InputKey"></param>
+        /// <param name="stringInTextBox"></param>
+        /// <returns></returns>
+        private static bool HasMoreThanOneDecimal(KeyPressEventArgs InputKey, string stringInTextBox)
+        {
+            return InputKey.KeyChar == 46 && stringInTextBox.Contains('.');
         }
 
         /// <summary>
@@ -207,44 +223,6 @@ namespace SnowBall
         private static bool IsInvalidCharacter(char chr)
         {
             return !Char.IsDigit(chr) && chr != 8 && chr != 46;
-        }
-        /// <summary>
-        /// Checks the Amount Text box for multiple decimals
-        /// </summary>
-        /// <param name="InputKey"></param>
-        private void AmountTextBoxDecimalCheck(KeyPressEventArgs InputKey)
-        {
-            if (InputKey.KeyChar == 46 && (AmountTextBox.Text.Contains(".")))
-            {
-                InputKey.Handled = true;
-                MessageBox.Show("Please enter a valid value");
-            }
-        }
-
-        /// <summary>
-        /// Checks the MinimumPayment Text box for multiple decimals
-        /// </summary>
-        /// <param name="InputKey"></param>
-        private void MinimumPaymentBoxDecimalCheck(KeyPressEventArgs InputKey)
-        {
-            if (InputKey.KeyChar == 46 && (MinimumPaymentTextBox.Text.Contains(".")))
-            {
-                InputKey.Handled = true;
-                MessageBox.Show("Please enter a valid value");
-            }
-        }
-
-        /// <summary>
-        /// Checks the ExtraForDebt Text box for multiple decimals
-        /// </summary>
-        /// <param name="InputKey"></param>
-        private void ExtraForDebtBoxDecimalCheck(KeyPressEventArgs InputKey)
-        {
-            if (InputKey.KeyChar == 46 && (ExtraForDebtTextBox.Text.Contains(".")))
-            {
-                InputKey.Handled = true;
-                MessageBox.Show("Please enter a valid value");
-            }
         }
     }
 }
